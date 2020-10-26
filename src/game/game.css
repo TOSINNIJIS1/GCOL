@@ -1,0 +1,16 @@
+/* .game {
+    margin: 0 auto;
+} */
+
+.board {
+    display: flex;
+    font-size: 30%;
+    justify-content: center;
+    color: red;
+    border: solid pink;
+}
+
+.grid {
+    display: flex;
+    flex-direction: row;
+}

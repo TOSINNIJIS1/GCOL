@@ -1,0 +1,21 @@
+
+.nav {
+    // margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav h1 {
+    font-size: 50px;
+}
+
+ul {
+    border: solid;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 20%;
+}
+
+
+
