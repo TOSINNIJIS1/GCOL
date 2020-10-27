@@ -20,8 +20,8 @@ function App() {
         [-1, 0]
     ]
 
-  const gridRow = 35;
-  const gridCol = 35;
+  const gridRow = 25;
+  const gridCol = 25;
  
   return (
     <div className="container">
