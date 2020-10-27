@@ -1,4 +1,5 @@
 import React from 'react';
+import './click.scss'
 
 export default function OnclickButton ({start, Start, Random, startCGOL, Clear }) {
 

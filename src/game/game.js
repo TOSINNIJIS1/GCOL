@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import './game.css';
+import './game.scss';
 import produce from 'immer';
 import OnClickButton from '../onClick/onClickButton'
 
@@ -107,7 +107,7 @@ const Game = ({gridRow, gridCol, operations}) => {
                             })
                             setState(newState)
                         }}
-                        style={{width: 20, height: 20, backgroundColor: state[i][j] ? 'black' : undefined, border: '1px solid black' }}>
+                        style={{width: 20, height: 20, backgroundColor: state[i][j] ? '#66FCF1' : undefined, border: '1px solid white' }}>
                         </div>
                 )))}
             </div>
