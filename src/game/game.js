@@ -3,6 +3,7 @@ import './game.scss';
 import produce from 'immer';
 import OnClickButton from '../onClick/onClickButton'
 
+
 const Game = ({gridRow, gridCol, operations}) => {
     // Board
     const generateEmptyBoard = () => {
@@ -88,9 +89,10 @@ const Game = ({gridRow, gridCol, operations}) => {
                     }
                 }
             })
-        })
-        setTimeout(startCGOL, 1000)
+        }) 
+        setTimeout(startCGOL, 1000) // eslint-disable-next-line
     },[])
+
     
     return (
         <div>
