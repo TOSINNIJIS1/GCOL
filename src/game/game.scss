@@ -1,4 +1,29 @@
 .board {
-    display: flex;
+    display: grid;
     justify-content: center;
+
+    .grid {
+        max-width: 99%;
+        display: grid;
+        width: 20px;
+        height: 20px;
+        border: 1px solid white;
+    }
 }
+
+@media only screen and (max-width: 768px) {
+    /* for mobile phone */
+    .board{
+        max-width: 99%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        .grid {
+            width: 19px;
+            height: 15px;
+        }
+    }
+    
+}
+
+
