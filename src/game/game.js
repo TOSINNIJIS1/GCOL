@@ -98,7 +98,9 @@ const Game = ({gridRow, gridCol, operations}) => {
         <div>
             <OnClickButton start={start} Start={Start} Random={Random} startCGOL={startCGOL} Clear={Clear} />
 
-            <div className='board' style={{display: 'grid', gridTemplateColumns: `repeat(${gridCol}, 20px)`}}>
+            <div className='board' 
+            style={{gridTemplateColumns: `repeat(${gridCol}, ${gridRow}px)`, }}
+            >
                 {state.map((a, i) => 
                     a.map((b, j) => (
                         <div key={`${i}-${j}`}
@@ -109,7 +111,8 @@ const Game = ({gridRow, gridCol, operations}) => {
                             })
                             setState(newState)
                         }}
-                        style={{width: 20, height: 20, backgroundColor: state[i][j] ? '#66FCF1' : undefined, border: '1px solid white' }}>
+                        style={{backgroundColor: state[i][j] ? '#66FCF1' : undefined } }
+                        >
                         </div>
                 )))}
             </div>
