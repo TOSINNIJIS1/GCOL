@@ -4,8 +4,7 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-    padding-top: 25vh;
-
+    padding-top: 20vh;
 
     h1 {
         border-bottom: #66FCF1 solid;
@@ -14,11 +13,26 @@
     }
 
     ol li{
-
         margin-top: 15px;
         font-size: 20px;
         font-family: Cinzel;
-
     }
-
 }
+
+@media only screen and (max-width: 768px) {
+    /* for mobile phone */
+    .RulesContainer {
+        padding-top: 6vh;
+
+        h1 {
+            margin-top: 5%;
+            font-size: 30px;
+        }
+
+        ol li{
+            font-size: 20px;
+            font-family: 'Cinzel', serif;
+        }
+    }
+}
+

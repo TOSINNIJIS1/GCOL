@@ -11,6 +11,17 @@
         align-content: center;
         color: #66FCF1;
         font-family: Cinzel;
+    }
+}
 
+@media only screen and (max-width: 768px) {
+    /* for mobile phone */
+    .homeContainer {
+        h4 {
+            width: 99%;
+            padding-top: 40%;
+            font-size: 38px;
+            font-family: 'Cinzel Decorative', cursive;
+        }
     }
 }

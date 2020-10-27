@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+import './rules/rules.scss';
 import Game from './game/game';
 import Rules from './rules/rules';
 import Nav from './nav/nav';
@@ -20,8 +21,8 @@ function App() {
         [-1, 0]
     ]
 
-  const gridRow = 25;
-  const gridCol = 25;
+  const gridRow = 20;
+  const gridCol = 20;
  
   return (
     <div className="container">
