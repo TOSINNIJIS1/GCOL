@@ -11,7 +11,8 @@ const Game = ({gridRow, gridCol, operations}) => {
         const row = [];
         
         for (let i = 0; i < gridRow; i++) {
-            row.push(Array.from(Array(gridCol), () => 0));        }
+            row.push(Array.from(Array(gridCol), () => 0))
+        }
         return row;
         // looping ends here
     };
@@ -23,12 +24,12 @@ const Game = ({gridRow, gridCol, operations}) => {
     // Ends Here
 
     // Start state. then stop the state with setStart 
-    const [start, setStart] = useState(1);
+    const [start, setStart] = useState(0);
 
     function Start () {
         setStart(!start);
         if (!start) {
-            startRef.current = false;
+            startRef.current = true;
         } startCGOL();
     }
     // ends Here
@@ -88,7 +89,7 @@ const Game = ({gridRow, gridCol, operations}) => {
                 }
             })
         }) 
-        setTimeout(startCGOL, 2000) // eslint-disable-next-line
+        setTimeout(startCGOL, 1000) // eslint-disable-next-line
     },[])
 
     
@@ -96,9 +97,7 @@ const Game = ({gridRow, gridCol, operations}) => {
         <div className='game'>
             <OnClickButton start={start} Start={Start} Random={Random} startCGOL={startCGOL} Clear={Clear} />
 
-            <div className='board' 
-            style={{gridTemplateColumns: `repeat(${gridRow}, ${gridRow})`, }}
-            >
+            <div className='board'>
                 {state.map((a, i) => 
                     a.map((b, j) => (
                         <div key={`${i}-${j}`}
