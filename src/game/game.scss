@@ -1,14 +1,16 @@
-.board {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(20, 20px);
-
-    .grid {
-        max-width: 99%;
+.game {
+    .board { 
         display: grid;
-        width: 20px;
-        height: 20px;
-        border: 1px solid white;
+        justify-content: center;
+        grid-template-columns: repeat(20, 20px);
+    
+        .grid {
+            max-width: 99%;
+            display: grid;
+            width: 20px;
+            height: 20px;
+            border: 1px solid white;
+        }
     }
 }
 
@@ -17,10 +19,9 @@
     .game {
         .board{
             grid-template-columns: repeat(10 + 5, 10 + 10px );
-    
+            
             .grid {
                 height: 15px;
-
             }
         }
 
