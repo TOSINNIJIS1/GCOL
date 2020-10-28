@@ -11,8 +11,7 @@ const Game = ({gridRow, gridCol, operations}) => {
         const row = [];
         
         for (let i = 0; i < gridRow; i++) {
-            row.push(Array.from(Array(gridCol), () => 0));
-        }
+            row.push(Array.from(Array(gridCol), () => 0));        }
         return row;
         // looping ends here
     };
@@ -23,14 +22,13 @@ const Game = ({gridRow, gridCol, operations}) => {
     })
     // Ends Here
 
-
     // Start state. then stop the state with setStart 
-    const [start, setStart] = useState(false);
+    const [start, setStart] = useState(1);
 
     function Start () {
         setStart(!start);
         if (!start) {
-            startRef.current = true;
+            startRef.current = false;
         } startCGOL();
     }
     // ends Here
@@ -71,10 +69,10 @@ const Game = ({gridRow, gridCol, operations}) => {
             return produce(g, stateCopy => {
                 for (let i = 0; i < gridRow; i++) {
                     for (let j = 0; j < gridCol; j++) {
-                        let neighbor = 0;
-                        operations.forEach(([x, y]) => {
-                            const newI = i + x;
-                            const newJ = j + y;
+                        let neighbor = 0; // eslint-disable-next-line
+                        operations.map(([x, y]) => { 
+                            const newI = x + i;
+                            const newJ = y + j;
                             if (newI >= 0 && newI < gridRow && newJ >= 0 && newJ < gridCol) {
                                 neighbor += g[newI][newJ]
                             }
@@ -95,11 +93,11 @@ const Game = ({gridRow, gridCol, operations}) => {
 
     
     return (
-        <div>
+        <div className='game'>
             <OnClickButton start={start} Start={Start} Random={Random} startCGOL={startCGOL} Clear={Clear} />
 
             <div className='board' 
-            style={{gridTemplateColumns: `repeat(${gridCol}, ${gridRow}px)`, }}
+            style={{gridTemplateColumns: `repeat(${gridRow}, ${gridRow}++px)`, }}
             >
                 {state.map((a, i) => 
                     a.map((b, j) => (
