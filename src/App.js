@@ -21,7 +21,7 @@ function App() {
         [-1, 0]
     ]
 
-  const gridRow = 20;
+  const gridRow = 15;
   const gridCol = 20;
  
   return (
