@@ -16,10 +16,10 @@
     /* for mobile phone */
     .game {
         .board{
-            grid-template-columns: repeat(10 + 2, 10 + 10px );
+            grid-template-columns: repeat(10 + 5, 10 + 10px );
     
             .grid {
-                height: 14px;
+                height: 15px;
 
             }
         }

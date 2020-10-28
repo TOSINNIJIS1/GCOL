@@ -88,7 +88,7 @@ const Game = ({gridRow, gridCol, operations}) => {
                 }
             })
         }) 
-        setTimeout(startCGOL, 1000) // eslint-disable-next-line
+        setTimeout(startCGOL, 2000) // eslint-disable-next-line
     },[])
 
     
@@ -97,7 +97,7 @@ const Game = ({gridRow, gridCol, operations}) => {
             <OnClickButton start={start} Start={Start} Random={Random} startCGOL={startCGOL} Clear={Clear} />
 
             <div className='board' 
-            style={{gridTemplateColumns: `repeat(${gridRow}, ${gridRow}++px)`, }}
+            style={{gridTemplateColumns: `repeat(${gridRow}, ${gridRow})`, }}
             >
                 {state.map((a, i) => 
                     a.map((b, j) => (
