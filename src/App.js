@@ -23,13 +23,14 @@ function App() {
 
   const gridRow = 15;
   const gridCol = 20;
+
  
   return (
     <div className="container">
       <Router>
       <Nav />
         <Route exact path="/" render={() => <Home /> } />
-        <Route exact path="/play" render={() => <Game operations={operations} gridRow ={gridRow} gridCol = {gridCol} /> } />   
+        <Route exact path="/play" render={() => <Game operations={operations} gridRow ={gridRow} gridCol = {gridCol}/> } />   
         <Route exact path="/rules" render={() => <Rules /> } />
         <Route exact path="/about" render={() => <About /> } />
       </Router>

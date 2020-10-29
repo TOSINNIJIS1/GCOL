@@ -1,4 +1,6 @@
 .game {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 20px;
     .board { 
         display: grid;
         justify-content: center;
@@ -11,12 +13,19 @@
             height: 20px;
             border: 1px solid white;
         }
+
+        
+    }
+    .gen {
+        display: flex;
+        justify-content: center;
     }
 }
 
 @media only screen and (max-width: 768px) {
     /* for mobile phone */
     .game {
+        font-size: 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;

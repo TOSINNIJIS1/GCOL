@@ -1,10 +1,11 @@
 import React from 'react';
 import './click.scss'
 
-export default function OnclickButton ({start, Start, Random, startCGOL, Clear }) {
+export default function OnclickButton ({start, Start, Random, startCGOL, Clear, generations, Click }) {
 
 
 return (
+    <div>
     <div className='buttons'>
         <button className='start' onClick={Start}>
             {start ? 'pause' : 'play' }
@@ -26,11 +27,15 @@ return (
             x5
         </button>
 
+        <button onClick={Click}>
+            Click
+        </button>
+
         <button className='clear' onClick={Clear}>
             Clear
         </button>
+    </div>
 
-
-        </div>
+    </div>
     )
 }
