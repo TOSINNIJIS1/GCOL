@@ -2,12 +2,12 @@
     .board { 
         display: grid;
         justify-content: center;
-        grid-template-columns: repeat(20, 20px);
+        margin: 0 auto;
+        margin-top: 30px;
+        grid-template-columns: repeat(20, 15px);
     
         .grid {
-            max-width: 99%;
             display: grid;
-            width: 20px;
             height: 20px;
             border: 1px solid white;
         }
@@ -17,17 +17,17 @@
 @media only screen and (max-width: 768px) {
     /* for mobile phone */
     .game {
-        .board{
-            grid-template-columns: repeat(10 + 5, 10 + 10px );
-            
-            .grid {
-                height: 15px;
-            }
-        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto;
 
+        .board{
+            display: grid;
+            flex-direction: column;
+            margin: 0 auto;
+        }
     }
-    
-    
 }
 
 

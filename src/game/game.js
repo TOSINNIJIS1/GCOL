@@ -94,26 +94,31 @@ const Game = ({gridRow, gridCol, operations}) => {
 
     
     return (
-        <div className='game'>
+        <div>
             <OnClickButton start={start} Start={Start} Random={Random} startCGOL={startCGOL} Clear={Clear} />
-
-            <div className='board'>
-                {state.map((a, i) => 
-                    a.map((b, j) => (
-                        <div key={`${i}-${j}`}
-                        className='grid'
-                        onClick={() => {
-                            const newState = produce(state, stateCopy => {
-                                stateCopy[i][j] = state[i][j] ? 0 : 1;
-                            })
-                            setState(newState)
-                        }}
-                        style={{backgroundColor: state[i][j] ? '#66FCF1' : undefined } }
+            
+            <div className='game'>
+            
+                <div className='board'
+                style={{width: 1, border: `1px solid`}}
+                >
+                    {state.map((a, i) => 
+                        a.map((b, j) => (
+                            <div key={`${i}-${j}`}
+                            className='grid'
+                            onClick={() => {
+                                const newState = produce(state, stateCopy => {
+                                    stateCopy[i][j] = state[i][j] ? 0 : 1;
+                                })
+                                setState(newState)
+                            }}
+                            style={{backgroundColor: state[i][j] ? '#66FCF1' : undefined } }
                         >
-                        </div>
+                            </div>
                 )))}
             </div>
         </div>
+    </div>
     )
 }
 
