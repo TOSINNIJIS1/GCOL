@@ -10,9 +10,9 @@ const rules = [
 
 export default function Rules() {
     return <main className="rulesPage">
-        <div className="rulesIntro"><p className="sectionLabel">THE LOGIC / 01</p><h1>Simple rules.<br /><em>Endless worlds.</em></h1><p>Conway's Game of Life is a cellular automaton: a universe made of cells that changes one generation at a time, with no players and no randomness required.</p></div>
+        <div className="rulesIntro"><p className="sectionLabel">THE LOGIC / B3/S23</p><h1>Simple rules.<br /><em>Endless worlds.</em></h1><p>Conway's Game of Life is a cellular automaton: a universe made of cells that changes one generation at a time, with no players and no randomness required.</p></div>
         <section className="rulesGrid" aria-label="Game of Life rules">{rules.map(([number, title, description]) => <article className="ruleCard" key={number}><span>{number}</span><h2>{title}</h2><p>{description}</p></article>)}</section>
         <section className="stopPanel"><div><p className="sectionLabel">THE SIMULATOR / 02</p><h2>When does it stop?</h2></div><div className="stopCopy"><p>VOAI-CGOL pauses automatically when it recognizes that the world is no longer producing meaningful change.</p><ul><li><b>Stable board</b><span>The next generation is identical to the current one.</span></li><li><b>Repeated state</b><span>The same complete board appears five times.</span></li></ul></div></section>
-        <p className="rulesFooter">Tip: Start with a Glider to see motion, a Blinker to see oscillation, or a Block to see a stable pattern.</p>
+        <p className="rulesFooter">Tip: Start with a Glider to see motion, a Blinker to see oscillation, or a Block to see a stable pattern. Turn on edge wrapping to let opposite sides of the board meet.</p>
     </main>;
 }

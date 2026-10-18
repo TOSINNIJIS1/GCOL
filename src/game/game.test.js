@@ -8,7 +8,7 @@ test('supports painting and undoing a board edit', () => {
     const { getByLabelText, getByRole } = render(<Game gridRow={4} gridCol={4} operations={operations} />);
     const firstCell = getByLabelText('Row 1, column 1, dead');
 
-    fireEvent.mouseDown(firstCell);
+    fireEvent.pointerDown(firstCell, { button: 0, pointerType: 'mouse' });
 
     expect(getByLabelText('Row 1, column 1, alive')).toBeInTheDocument();
     fireEvent.click(getByRole('button', { name: /undo/i }));
