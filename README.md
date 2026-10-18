@@ -17,7 +17,7 @@ VOAI-CGOL is a browser-based Conway's Game of Life studio. It combines a reliabl
 
 ## Development
 
-Requirements: Node.js 20+ and npm.
+Requirements: Node.js 22 and npm 10+.
 
 ```bash
 npm install
@@ -25,6 +25,10 @@ npm run dev
 ```
 
 Open [http://localhost:5173](http://localhost:5173). The client uses Vite; no OpenSSL compatibility flag is required.
+
+### Netlify deployment
+
+The repository includes `netlify.toml`. Netlify should use Node 22, run `npm run build`, and publish `dist`. The SPA rewrite in that file keeps React Router routes working on refresh. Netlify hosts the Vite client only. The Socket.IO server must run separately on a Node host that supports long-lived WebSocket connections; set the deployed client’s `VITE_SOCKET_URL` to that server URL.
 
 ### Online multiplayer
 
