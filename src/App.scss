@@ -4,3 +4,11 @@ body { margin: 0; background: #080c10; color: #eaf4f3; -webkit-font-smoothing: a
 button, input, select { font-family: inherit; }
 a { text-decoration: none; }
 .container { min-height: 100vh; background: radial-gradient(circle at 50% -20%, rgba(25,75,79,.18), transparent 40%), #080c10; }
+:root[data-theme='classic'] { --cyan:#7ac943; --coral:#e58b44; --line:#405044; --surface:#152016; }
+:root[data-theme='minimal'] { --cyan:#b8c7cc; --coral:#e1e7e8; --line:#354149; --surface:#101418; }
+:root[data-theme='midnight'] { --cyan:#a78bfa; --coral:#f472b6; --line:#312e5a; --surface:#100d24; }
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+// Infinite-world appearance controls reuse the studio's persisted document data attributes.
+:root[data-grid='off'] .infiniteViewport { background-image: none; }
+:root[data-glow='off'] .infiniteViewport i.alive { box-shadow: none; }

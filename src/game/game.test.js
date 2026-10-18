@@ -16,9 +16,9 @@ test('supports painting and undoing a board edit', () => {
 });
 
 test('loads a pattern into the canvas', () => {
-    const { getByText, getAllByRole } = render(<Game gridRow={20} gridCol={30} operations={operations} />);
+    const { getAllByText, getAllByRole } = render(<Game gridRow={20} gridCol={30} operations={operations} />);
 
-    fireEvent.click(getByText('Block'));
+    fireEvent.click(getAllByText('Block')[0]);
 
     expect(getAllByRole('gridcell').filter((cell) => cell.getAttribute('aria-label').includes('alive')).length).toBe(4);
 });

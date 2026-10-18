@@ -6,36 +6,22 @@ import Rules from './rules/rules';
 import Nav from './nav/nav';
 import About from './about/about';
 import Duel from './duel/duel';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import InfiniteWorld from './game/InfiniteWorld';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
-  // Direction for the grid
-  const operations = [
-        [0, 1],
-        [0, -1],
-        [1, -1],
-        [-1, 1],
-        [1, 1],
-        [-1, -1],
-        [1, 0],
-        [-1, 0]
-    ]
-
-  const gridRow = 20;
-  const gridCol = 30;
-
- 
+  const operations = [[0, 1], [0, -1], [1, -1], [-1, 1], [1, 1], [-1, -1], [1, 0], [-1, 0]];
   return (
     <div className="container">
       <Router>
-      <Nav />
-        <Route exact path="/" render={() => <Game operations={operations} gridRow ={gridRow} gridCol = {gridCol}/> } />
-        <Route exact path="/play" render={() => <Game operations={operations} gridRow ={gridRow} gridCol = {gridCol}/> } />
-        <Route exact path="/duel" render={() => <Duel /> } />
-        <Route exact path="/rules" render={() => <Rules /> } />
-        <Route exact path="/about" render={() => <About /> } />
+        <Nav />
+        <Route exact path="/" render={() => <Game operations={operations} gridRow={20} gridCol={30} />} />
+        <Route exact path="/play" render={() => <Game operations={operations} gridRow={20} gridCol={30} />} />
+        <Route exact path="/duel" component={Duel} />
+        <Route exact path="/infinite" component={InfiniteWorld} />
+        <Route exact path="/rules" component={Rules} />
+        <Route exact path="/about" component={About} />
       </Router>
-      
     </div>
   );
 }

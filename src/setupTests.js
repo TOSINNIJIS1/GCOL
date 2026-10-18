@@ -3,3 +3,11 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
+import { cleanup } from '@testing-library/react';
+import { afterEach } from 'vitest';
+
+afterEach(cleanup);
+if (typeof window !== 'undefined') {
+  const getComputedStyle = window.getComputedStyle;
+  window.getComputedStyle = (element) => getComputedStyle(element);
+}

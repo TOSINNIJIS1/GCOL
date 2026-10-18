@@ -1,6 +1,6 @@
 # VOAI-CGOL - Conway's Game of Life Studio
 
-VOAI-CGOL is a browser-based Conway's Game of Life studio. It keeps the original dark, tactile simulator design while adding a reliable B3/S23 engine, RLE sharing, local pattern storage, interaction improvements, and an online 1v1 survival duel.
+VOAI-CGOL is a browser-based Conway's Game of Life studio. It combines a reliable B3/S23 engine, finite and sparse infinite worlds, pattern tools, replay analytics, visual sharing, and an online Socket.IO arena.
 
 ## Studio features
 
@@ -12,17 +12,19 @@ VOAI-CGOL is a browser-based Conway's Game of Life studio. It keeps the original
 - Standard RLE import/export with B3/S23 validation, a 200 × 200 pattern bound, and a 10,000-cell limit.
 - Save up to 24 custom RLE patterns in the browser’s local storage.
 - Private online 1v1 duels with room codes, synchronized boards, reconnect grace time, room expiry, and connection feedback.
+- Infinite sparse worlds with pan, zoom, bounded simulation work, visible-viewport PNG exports, and validated sharing links.
+- Timeline replay with bounded JSON recordings, pattern explorer/designer tools, persistent themes, and reduced-motion support.
 
 ## Development
 
-Requirements: Node.js 18+ and npm.
+Requirements: Node.js 20+ and npm.
 
 ```bash
 npm install
-npm start
+npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The included OpenSSL compatibility flag lets this legacy Create React App version run on newer Node versions.
+Open [http://localhost:5173](http://localhost:5173). The client uses Vite; no OpenSSL compatibility flag is required.
 
 ### Online multiplayer
 
@@ -33,20 +35,21 @@ Run the client and realtime service in separate terminals:
 npm run server
 
 # Terminal 2
-npm start
+npm run dev
 ```
 
-The client connects to `http://localhost:3001` in development. For a separate public server, set `REACT_APP_SOCKET_URL` before starting/building the client. During a duel, an active match pauses if either player disconnects and resumes automatically when both reconnect within 30 seconds. Inactive one-player rooms expire after 10 minutes.
+The client connects to `http://localhost:3001` in development. For a separate public server, set `VITE_SOCKET_URL` before starting or building the client. During a duel, an active match pauses if either player disconnects and resumes automatically when both reconnect within 30 seconds. Inactive one-player rooms expire after 10 minutes.
 
 ### Scripts
 
 | Command | Purpose |
 | --- | --- |
-| `npm start` | Start the React development server. |
+| `npm run dev` | Start the Vite development server. |
 | `npm run server` | Start the Socket.IO duel server on port 3001. |
 | `npm run serve` | Build the client and serve it with the Socket.IO server. |
-| `npm test -- --watchAll=false --no-cache` | Run all tests once. |
-| `npm run build` | Produce an optimized production build. |
+| `npm test` | Run the Vitest unit and component suite. |
+| `RUN_SOCKET_TESTS=true npm test` | Also run Socket.IO lifecycle integration tests (where loopback sockets are permitted). |
+| `npm run build` | Produce an optimized `dist/` production build. |
 
 ## RLE sharing
 
@@ -72,7 +75,7 @@ The simulator pauses automatically when a board is unchanged or when a complete 
 
 ## Tests
 
-The automated suite covers UI painting/undo and presets, plus pure simulation tests for still lifes, oscillators, gliders, fixed boundaries, edge wrapping, centering, and RLE validation/round-tripping.
+The automated suite covers UI painting/undo, finite and sparse evolution, RLE validation/round-tripping, recordings, and bounded world sharing. Socket.IO reconnect lifecycle coverage runs when loopback sockets are available.
 
 ## Project map
 

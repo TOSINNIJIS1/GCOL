@@ -48,5 +48,6 @@
 .duelLegend { padding: 13px 2px 0; font-size: .61rem; text-transform: none; letter-spacing: .02em; }
 .duelLegend i { width: 7px; height: 7px; display: inline-block; border-radius: 50%; margin-right: 5px; background: #75f5df; }
 .duelLegend i.two { background: #ff8967; }
+.arenaLobby{border:1px solid #24343d;background:#0d171c;padding:28px;max-width:620px}.arenaLobby p,.arenaLobby div{color:#83939b;padding:9px 0;border-bottom:1px solid #24343d}.arenaLobby button,.arenaLobby select,.rematch{margin:16px 8px 0 0;border:1px solid #75f5df;background:#75f5df;color:#081012;padding:10px 13px;font:inherit;cursor:pointer}.arenaLobby label{color:#83939b}.rematch{width:100%;margin-left:0;border-color:#ff8967;background:transparent;color:#ff8967}
 @keyframes duelPulse { 50% { opacity: .45; } }
 @media (max-width: 700px) { .duelLanding, .duelWorkspace { display: block; } .duelLanding { padding: 42px 18px; min-height: auto; } .duelLanding aside { border-left: 0; border-top: 1px solid #24343d; padding: 28px 0 0; margin-top: 50px; } .duelShell { padding: 38px 15px; } .duelHeader { display: block; margin-bottom: 30px; } .duelStatus { margin-top: 22px; } .roster { margin-bottom: 18px; } .duelBoard { padding: 6px; } .duelCanvasTop, .duelLegend { font-size: .54rem; } }
