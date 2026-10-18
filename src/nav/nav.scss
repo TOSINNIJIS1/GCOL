@@ -1,27 +1,8 @@
-.navContainer {
-    max-width: 100%;
-    width: 100%;
-    border-bottom: solid #66FCF1;
-    font-family: 'Cinzel', serif;
-
-
-    h1 {
-        font-size: 70px;
-        display: flex;
-        justify-content: center;
-        font-family: 'Cinzel Decorative', cursive;
-    
-    }
-
-    nav ul {
-        font-size: 30px;
-        display: flex;
-        margin-top: 2%;
-        justify-content: space-around;
-        list-style-type: none;
-    }
-
-    li {
-        color: #66FCF1;
-    }
-}
+.navContainer { height: 74px; max-width: 1440px; margin: 0 auto; padding: 0 40px; border-bottom: 1px solid #24343d; display: flex; align-items: center; justify-content: space-between; font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; }
+.brand { color: #eaf4f3; font-size: 1.4rem; font-weight: 700; letter-spacing: -.06em; }
+.brand b { color: #75f5df; font-weight: 500; }
+.navContainer nav { display: flex; gap: 35px; align-self: stretch; align-items: center; }
+.navContainer nav a { display: flex; align-items: center; height: 100%; border-bottom: 2px solid transparent; color: #83939b; font-size: .74rem; text-transform: uppercase; letter-spacing: .12em; }
+.navContainer nav a:hover, .navContainer nav a.active { color: #eaf4f3; border-bottom-color: #ff8967; }
+.navMark { color: #75f5df; font-size: 1.7rem; transform: rotate(45deg); }
+@media (max-width: 700px) { .navContainer { height: 64px; padding: 0 15px; } .navContainer nav { gap: 15px; } .navContainer nav a { font-size: .6rem; letter-spacing: .06em; } .navMark { display: none; } }

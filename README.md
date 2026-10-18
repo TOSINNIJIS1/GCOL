@@ -1,68 +1,103 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# VOAI-CGOL
 
-## Available Scripts
+VOAI-CGOL is an interactive, browser-based Conway's Game of Life laboratory. Draw a world cell by cell, load a classic pattern, or randomize the board and watch simple rules create complex motion.
 
-In the project directory, you can run:
+## Features
 
-### `yarn start`
+- Interactive 30 × 20 simulation canvas
+- Play, pause, and single-generation stepping
+- Speed modes: slow, balanced, and fast
+- Randomize and clear controls
+- Classic patterns: Glider, Beacon, Pulsar, Blinker, and Block
+- Generation and living-cell counters
+- Automatic stopping for stable boards
+- Automatic stopping when a previous board state appears five times
+- Spacebar shortcut for play/pause
+- Responsive dark interface for desktop and mobile
+- Online 1v1 Survival Duel with private room codes
+- Live synchronized setup board, 20-second opening phase, and 30-generation matches
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting started
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Requirements:
 
-### `yarn test`
+- Node.js 18 or newer
+- npm
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Install dependencies and start the development server:
 
-### `yarn build`
+```bash
+npm install
+npm start
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Open [http://localhost:3000](http://localhost:3000) in your browser. If that port is already in use, Create React App will offer another port.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Play online 1v1
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Run the client and the realtime server in separate terminals:
 
-### `yarn eject`
+```bash
+# Terminal 1: realtime room server
+npm run server
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Terminal 2: React client
+npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Open the **1v1 Duel** tab. One player creates a room and shares the five-character code; the other player enters that code to join.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Both players receive a color and have 20 seconds to build an opening. The board then evolves for 30 generations. The player whose color owns the most living cells wins.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+For deployment, serve the production build and Socket.IO server together:
 
-## Learn More
+```bash
+npm run serve
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+When the browser client and server use different origins, set `REACT_APP_SOCKET_URL` to the public server URL before building the client.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Available scripts
 
-### Code Splitting
+| Command | Description |
+| --- | --- |
+| `npm start` | Starts the development server with hot reload. |
+| `npm run server` | Starts the Socket.IO realtime room server on port 3001. |
+| `npm run serve` | Builds the client and serves it through the multiplayer server. |
+| `npm test -- --watchAll=false` | Runs the automated test suite once. |
+| `npm run build` | Creates an optimized production build. |
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+The project includes a compatibility flag for the legacy webpack version used by Create React App, so it works with current Node/OpenSSL versions.
 
-### Analyzing the Bundle Size
+## How the rules work
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Each cell has up to eight neighbors. Every generation is calculated from the previous board, so all cells update simultaneously:
 
-### Making a Progressive Web App
+1. A dead cell with exactly three live neighbors becomes alive.
+2. A live cell with fewer than two neighbors dies from underpopulation.
+3. A live cell with two or three neighbors survives.
+4. A live cell with more than three neighbors dies from overpopulation.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Automatic stopping
 
-### Advanced Configuration
+The simulation pauses when either condition is met:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- **Stable board:** the next generation is identical to the current generation.
+- **Repeated state:** the same complete board state has appeared five times.
 
-### Deployment
+Editing the board, loading a pattern, randomizing, or clearing resets the repeat tracking.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Project structure
 
-### `yarn build` fails to minify
+```text
+src/
+├── game/       Simulation state, board, patterns, and workspace styles
+├── nav/        Application navigation
+├── rules/      Rules page and explanation
+├── about/      About page
+└── App.js      Routes and application composition
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## License
+
+This project is private and intended for personal development and experimentation.

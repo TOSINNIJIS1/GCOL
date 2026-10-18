@@ -1,39 +1,21 @@
-.RulesContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    padding-top: 20vh;
-
-    h1 {
-        border-bottom: #66FCF1 solid;
-        font-size: 45px;
-        font-family: 'Cinzel Decorative', cursive;;
-    }
-
-    ol li{
-        margin-top: 15px;
-        font-size: 20px;
-        font-family: 'Cinzel', serif;
-
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    /* for mobile phone */
-    .RulesContainer {
-        padding-top: 6vh;
-
-        h1 {
-            margin-top: 5%;
-            font-size: 30px;
-        }
-
-        ol li{
-            font-size: 20px;
-            font-family: 'Cinzel', serif;
-        }
-    }
-}
-
+.rulesPage { max-width: 1120px; margin: 0 auto; padding: 70px 40px; font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; }
+.rulesIntro { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: end; padding-bottom: 70px; }
+.rulesPage .sectionLabel { color: #75f5df; font-size: .68rem; font-weight: 700; letter-spacing: .16em; }
+.rulesIntro h1 { font-size: clamp(3rem, 7vw, 6.4rem); line-height: .88; letter-spacing: -.08em; margin-top: 15px; }
+.rulesIntro h1 em { color: #75f5df; font-style: normal; }
+.rulesIntro > p:last-child { max-width: 400px; color: #83939b; font-size: 1rem; line-height: 1.7; padding-bottom: 5px; }
+.rulesGrid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #24343d; border-bottom: 1px solid #24343d; }
+.ruleCard { min-height: 230px; border-right: 1px solid #24343d; padding: 25px 20px 24px 0; margin-right: 20px; }
+.ruleCard:last-child { border-right: 0; margin-right: 0; }
+.ruleCard > span { color: #ff8967; font-size: .72rem; letter-spacing: .12em; }
+.ruleCard h2 { color: #eaf4f3; font-size: 1.35rem; margin: 64px 0 13px; }
+.ruleCard p { color: #83939b; font-size: .83rem; line-height: 1.55; }
+.stopPanel { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: 80px 0; }
+.stopPanel h2 { font-size: clamp(2rem, 4vw, 3.8rem); letter-spacing: -.06em; margin-top: 12px; }
+.stopCopy > p { color: #83939b; line-height: 1.65; max-width: 420px; margin: 0 0 25px; }
+.stopCopy ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid #24343d; }
+.stopCopy li { display: grid; grid-template-columns: 145px 1fr; gap: 20px; border-bottom: 1px solid #24343d; padding: 16px 0; }
+.stopCopy b { color: #75f5df; font-size: .78rem; font-weight: 500; }
+.stopCopy span { color: #83939b; font-size: .78rem; }
+.rulesFooter { color: #5d747c; border-top: 1px solid #24343d; padding-top: 18px; font-size: .76rem; }
+@media (max-width: 700px) { .rulesPage { padding: 42px 18px; } .rulesIntro, .stopPanel { display: block; padding-bottom: 48px; } .rulesIntro > p:last-child { margin-top: 30px; } .rulesGrid { grid-template-columns: 1fr 1fr; } .ruleCard:nth-child(2) { border-right: 0; margin-right: 0; } .ruleCard:nth-child(n+3) { border-top: 1px solid #24343d; } .stopPanel h2 { margin-bottom: 30px; } }
