@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
 import './duel.scss';
 
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || (import.meta.env.DEV ? `${window.location.protocol}//${window.location.hostname}:3001` : window.location.origin);
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || (import.meta.env.DEV ? `${window.location.protocol}//${window.location.hostname}:3001` : '');
 const SESSION_KEY = 'voai-cgol.duel-session.v1';
 
 const labelForPhase = { lobby: 'Waiting for challenger', setup: 'Build your opening', playing: 'Life is evolving', paused: 'Waiting to reconnect', finished: 'Match complete' };
@@ -21,6 +21,11 @@ export default function Duel() {
     const [spectating, setSpectating] = useState(false);
 
     useEffect(() => {
+        if (!SOCKET_URL) {
+            setConnection('offline');
+            setError('Multiplayer is not configured for this deployment. Set VITE_SOCKET_URL to your public Socket.IO server, then rebuild Netlify.');
+            return undefined;
+        }
         const socket = io(SOCKET_URL, { autoConnect: false });
         socketRef.current = socket;
         socket.on('room:state', setRoom);

@@ -28,7 +28,9 @@ Open [http://localhost:5173](http://localhost:5173). The client uses Vite; no Op
 
 ### Netlify deployment
 
-The repository includes `netlify.toml`. Netlify should use Node 22, run `npm run build`, and publish `dist`. The SPA rewrite in that file keeps React Router routes working on refresh. Netlify hosts the Vite client only. The Socket.IO server must run separately on a Node host that supports long-lived WebSocket connections; set the deployed client’s `VITE_SOCKET_URL` to that server URL.
+The repository includes `netlify.toml`. Netlify should use Node 22, run `npm run build`, and publish `dist`. The SPA rewrite in that file keeps React Router routes working on refresh. Netlify hosts the Vite client only. The Socket.IO server must run separately on a Node host that supports long-lived WebSocket connections.
+
+For a Netlify deployment, add `VITE_SOCKET_URL=https://your-socket-server.example.com` in Netlify environment variables and redeploy. On the Socket.IO host, set `CLIENT_ORIGIN=https://your-site.netlify.app` (or your custom domain). The client will show a configuration error when the public socket URL is missing instead of trying to connect to the static Netlify site.
 
 ### Online multiplayer
 
