@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const crypto = require('crypto');
 const express = require('express');
 const http = require('http');
@@ -11,8 +12,22 @@ const operations = [[0, 1], [0, -1], [1, -1], [-1, 1], [1, 1], [-1, -1], [1, 0],
 const rooms = new Map();
 const app = express(); const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: process.env.CLIENT_ORIGIN || true } });
-app.use(express.static(path.join(__dirname, 'dist')));
-app.get('/{*splat}', (_, response) => response.sendFile(path.join(__dirname, 'dist', 'index.html')));
+const distDirectory = path.join(__dirname, 'dist');
+const distIndex = path.join(distDirectory, 'index.html');
+
+if (fs.existsSync(distIndex)) {
+  app.use(express.static(distDirectory));
+  app.get('/{*splat}', (_, response) => response.sendFile(distIndex));
+} else {
+  app.get('/', (_, response) => response.status(200).json({
+    service: 'VOAI-CGOL multiplayer server',
+    status: 'ok',
+    frontend: 'Hosted separately',
+  }));
+  app.use((_, response) => response.status(404).json({
+    error: 'Frontend is hosted separately. Use the Netlify application URL.',
+  }));
+}
 
 const emptyBoard = () => Array.from({ length: ROWS }, () => Array(COLS).fill(0));
 const safeName = (value) => String(value || 'Player').replace(/[^a-z0-9 _-]/gi, '').trim().slice(0, 18) || 'Player';
